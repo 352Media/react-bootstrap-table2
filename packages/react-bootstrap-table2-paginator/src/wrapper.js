@@ -162,6 +162,7 @@ export default (Base, {
           nextPageTitle={ options.nextPageTitle || Const.NEXT_PAGE_TITLE }
           firstPageTitle={ options.firstPageTitle || Const.FIRST_PAGE_TITLE }
           lastPageTitle={ options.lastPageTitle || Const.LAST_PAGE_TITLE }
+          sizePerPageBtnContentRenderer={ options.sizePerPageBtnContentRenderer }
         />
       ];
     }
