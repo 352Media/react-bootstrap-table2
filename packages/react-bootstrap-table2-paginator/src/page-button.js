@@ -38,7 +38,7 @@ class PageButton extends Component {
 
 PageButton.propTypes = {
   onPageChange: PropTypes.func.isRequired,
-  page: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  page: PropTypes.node,
   active: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
   title: PropTypes.string
