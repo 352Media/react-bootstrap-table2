@@ -112,7 +112,9 @@ class Pagination extends pageResolver(Component) {
       sizePerPageList,
       currSizePerPage,
       hideSizePerPage,
-      hidePageListOnlyOnePage
+      hidePageListOnlyOnePage,
+      sizePerPageClass,
+      sizePerPageBtnClass
     } = this.props;
     const pages = this.calculatePageStatus(this.calculatePages(totalPages), lastPage);
     const [from, to] = this.calculateFromTo();
@@ -134,6 +136,8 @@ class Pagination extends pageResolver(Component) {
                   onClick={ this.toggleDropDown }
                   onBlur={ this.closeDropDown }
                   open={ open }
+                  className={sizePerPageClass}
+                  btnContextual={sizePerPageBtnClass}
                 />
               ) : null
           }
@@ -177,7 +181,9 @@ Pagination.propTypes = {
   withFirstAndLast: PropTypes.bool,
   alwaysShowAllBtns: PropTypes.bool,
   hideSizePerPage: PropTypes.bool,
-  hidePageListOnlyOnePage: PropTypes.bool
+  hidePageListOnlyOnePage: PropTypes.bool,
+  sizePerPageClass: PropTypes.string,
+  sizePerPageBtnClass: PropTypes.string
 };
 
 Pagination.defaultProps = {
