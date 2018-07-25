@@ -16,7 +16,7 @@ const defaultSizePerPageBtnContentRenderer = (currSizePerPage) => {
         <span className="caret" />
       </span>
     </Fragment>
-  )
+  );
 };
 
 const SizePerPageDropDown = (props) => {
