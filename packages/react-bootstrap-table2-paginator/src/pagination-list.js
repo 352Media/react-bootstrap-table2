@@ -8,7 +8,7 @@ const PaginatonList = props => (
     {
       props.pages.map(pageProps => (
         <PageButton
-          key={ pageProps.page }
+          key={ pageProps.title }
           { ...pageProps }
           onPageChange={ props.onPageChange }
         />
