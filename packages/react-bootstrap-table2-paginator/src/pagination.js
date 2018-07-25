@@ -137,8 +137,8 @@ class Pagination extends pageResolver(Component) {
                   onClick={ this.toggleDropDown }
                   onBlur={ this.closeDropDown }
                   open={ open }
-                  className={sizePerPageClass}
-                  btnContextual={sizePerPageBtnClass}
+                  className={ sizePerPageClass }
+                  btnContextual={ sizePerPageBtnClass }
                   sizePerPageBtnContentRenderer={ sizePerPageBtnContentRenderer }
                 />
               ) : null
