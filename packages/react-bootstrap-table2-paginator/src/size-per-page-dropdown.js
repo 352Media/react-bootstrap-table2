@@ -5,6 +5,20 @@ import SizePerPageOption from './size-per-page-option';
 
 const sizePerPageDefaultClass = 'react-bs-table-sizePerPage-dropdown';
 
+const defaultSizePerPageBtnContentRenderer = (currSizePerPage) => {
+  const Fragment = ({ children }) => children;
+
+  return (
+    <Fragment>
+      { currSizePerPage }
+      <span>
+        { ' ' }
+        <span className="caret" />
+      </span>
+    </Fragment>
+  )
+};
+
 const SizePerPageDropDown = (props) => {
   const {
     open,
@@ -16,7 +30,8 @@ const SizePerPageDropDown = (props) => {
     variation,
     btnContextual,
     currSizePerPage,
-    onSizePerPageChange
+    onSizePerPageChange,
+    sizePerPageBtnContentRenderer = defaultSizePerPageBtnContentRenderer
   } = props;
 
   const dropDownStyle = { visibility: hidden ? 'hidden' : 'visible' };
@@ -40,11 +55,7 @@ const SizePerPageDropDown = (props) => {
         onClick={ onClick }
         onBlur={ onBlur }
       >
-        { currSizePerPage }
-        <span>
-          { ' ' }
-          <span className="caret" />
-        </span>
+        { sizePerPageBtnContentRenderer(currSizePerPage) }
       </button>
       <ul className="dropdown-menu" role="menu" aria-labelledby="pageDropDown">
         {
@@ -71,7 +82,8 @@ SizePerPageDropDown.propTypes = {
   hidden: PropTypes.bool,
   btnContextual: PropTypes.string,
   variation: PropTypes.oneOf(['dropdown', 'dropup']),
-  className: PropTypes.string
+  className: PropTypes.string,
+  sizePerPageBtnContentRenderer: PropTypes.func
 };
 SizePerPageDropDown.defaultProps = {
   open: false,

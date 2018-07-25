@@ -164,6 +164,7 @@ export default (Base, {
           lastPageTitle={ options.lastPageTitle || Const.LAST_PAGE_TITLE }
           sizePerPageClass={ options.sizePerPageClass }
           sizePerPageBtnClass={ options.sizePerPageBtnClass }
+          sizePerPageBtnContentRenderer={ options.sizePerPageBtnContentRenderer }
         />
       ];
     }
