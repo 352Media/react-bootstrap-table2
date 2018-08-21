@@ -43,7 +43,6 @@ describe('SizePerPageDropDown', () => {
     it('should rendering SizePerPageDropDown correctly', () => {
       expect(wrapper.length).toBe(1);
       expect(wrapper.find('button').length).toBe(1);
-      expect(wrapper.find('button').text()).toEqual(`${currSizePerPage} `);
     });
 
     it('should rendering SizePerPageOption successfully', () => {
@@ -80,7 +79,6 @@ describe('SizePerPageDropDown', () => {
     it('should rendering SizePerPageDropDown correctly', () => {
       expect(wrapper.length).toBe(1);
       expect(wrapper.find('button').length).toBe(1);
-      expect(wrapper.find('button').text()).toEqual(`${currSizePerPage} `);
     });
 
     it('should rendering SizePerPageOption successfully', () => {
