@@ -1,20 +1,25 @@
 import React from 'react';
 import cs from 'classnames';
 import PropTypes from 'prop-types';
+import { BootstrapContext } from './bootstrap';
 import SizePerPageOption from './size-per-page-option';
 
 const sizePerPageDefaultClass = 'react-bs-table-sizePerPage-dropdown';
 
-const defaultSizePerPageBtnContentRenderer = (currSizePerPage) => {
+const defaultSizePerPageBtnContentRenderer = (currSizePerPage, bootstrap4) => {
   const Fragment = ({ children }) => children;
 
   return (
     <Fragment>
       { currSizePerPage }
-      <span>
-        { ' ' }
-        <span className="caret" />
-      </span>
+      { ' ' }
+      {
+        bootstrap4 ? null : (
+          <span>
+            <span className="caret" />
+          </span>
+        )
+      }
     </Fragment>
   );
 };
@@ -35,40 +40,52 @@ const SizePerPageDropDown = (props) => {
   } = props;
 
   const dropDownStyle = { visibility: hidden ? 'hidden' : 'visible' };
+  const openClass = open ? 'open show' : '';
   const dropdownClasses = cs(
-    open ? 'open show' : '',
+    openClass,
     sizePerPageDefaultClass,
     variation,
     className,
   );
 
   return (
-    <span
-      style={ dropDownStyle }
-      className={ dropdownClasses }
-    >
-      <button
-        id="pageDropDown"
-        className={ `btn ${btnContextual} dropdown-toggle` }
-        data-toggle="dropdown"
-        aria-expanded={ open }
-        onClick={ onClick }
-        onBlur={ onBlur }
-      >
-        { sizePerPageBtnContentRenderer(currSizePerPage) }
-      </button>
-      <ul className="dropdown-menu" role="menu" aria-labelledby="pageDropDown">
-        {
-          options.map(option => (
-            <SizePerPageOption
-              { ...option }
-              key={ option.text }
-              onSizePerPageChange={ onSizePerPageChange }
-            />
-          ))
-        }
-      </ul>
-    </span>
+    <BootstrapContext.Consumer>
+      {
+        ({ bootstrap4 }) => (
+          <span
+            style={ dropDownStyle }
+            className={ dropdownClasses }
+          >
+            <button
+              id="pageDropDown"
+              className={ `btn ${btnContextual} dropdown-toggle` }
+              data-toggle="dropdown"
+              aria-expanded={ open }
+              onClick={ onClick }
+              onBlur={ onBlur }
+            >
+              { sizePerPageBtnContentRenderer(currSizePerPage, bootstrap4) }
+            </button>
+            <ul
+              className={ `dropdown-menu ${openClass}` }
+              role="menu"
+              aria-labelledby="pageDropDown"
+            >
+              {
+                options.map(option => (
+                  <SizePerPageOption
+                    { ...option }
+                    key={ option.text }
+                    bootstrap4={ bootstrap4 }
+                    onSizePerPageChange={ onSizePerPageChange }
+                  />
+                ))
+              }
+            </ul>
+          </span>
+        )
+      }
+    </BootstrapContext.Consumer>
   );
 };
 
