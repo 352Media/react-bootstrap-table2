@@ -165,6 +165,9 @@ export default (
               nextPageTitle={ options.nextPageTitle || Const.NEXT_PAGE_TITLE }
               firstPageTitle={ options.firstPageTitle || Const.FIRST_PAGE_TITLE }
               lastPageTitle={ options.lastPageTitle || Const.LAST_PAGE_TITLE }
+              sizePerPageBtnClass={ options.sizePerPageBtnClass }
+              sizePerPageBtnContentRenderer={ options.sizePerPageBtnContentRenderer }
+              sizePerPageClass={ options.sizePerPageClass }
             />
           </BootstrapContext.Provider>
         </PaginationContext.Provider>
